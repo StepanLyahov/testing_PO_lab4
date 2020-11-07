@@ -3,7 +3,6 @@ package com.stepan.todoistback.web.api.v1;
 import com.stepan.todoistback.business.service.ProjectService;
 import com.stepan.todoistback.web.dto.enums.ProjectDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
