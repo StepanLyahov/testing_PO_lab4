@@ -1,16 +1,14 @@
 package com.stepan.todoistback.web.api.v1;
 
 import com.stepan.todoistback.business.service.TaskService;
+import com.stepan.todoistback.units.DataUtils;
 import com.stepan.todoistback.web.dto.TaskDto;
-import com.stepan.todoistback.web.dto.enums.StatusTask;
 import lombok.SneakyThrows;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import org.springframework.http.MediaType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.stepan.todoistback.web.ApiConstantUtil.TASK;
@@ -25,28 +23,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class TaskControllerTest extends ApiTest {
 
+    DataUtils dataUtils = new DataUtils();
+
     @MockBean
     TaskService taskService;
 
     TaskDto taskDto;
-    List<TaskDto> taskDtos;
-
-    @Before
-    public void initDate() {
-        taskDto = TaskDto.builder()
-                .description("des")
-                .id((long) 1)
-                .projectId((long) 1)
-                .status(StatusTask.IN_PROGRESS)
-                .title("Title")
-                .build();
-
-
-        taskDtos = new ArrayList<>();
-        taskDtos.add(taskDto);
-        taskDtos.add(taskDto);
-    }
-
+    List<TaskDto> taskDtos = dataUtils.getListTaskDto();
 
     @Test
     @SneakyThrows

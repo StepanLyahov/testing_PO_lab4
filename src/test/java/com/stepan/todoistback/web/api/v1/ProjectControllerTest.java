@@ -1,9 +1,8 @@
 package com.stepan.todoistback.web.api.v1;
 
 import com.stepan.todoistback.business.service.ProjectService;
-import com.stepan.todoistback.web.dto.TaskDto;
+import com.stepan.todoistback.units.DataUtils;
 import com.stepan.todoistback.web.dto.enums.ProjectDto;
-import com.stepan.todoistback.web.dto.enums.StatusTask;
 import lombok.SneakyThrows;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,28 +22,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class ProjectControllerTest extends ApiTest {
 
+    DataUtils dataUtils = new DataUtils();
+
     @MockBean
     ProjectService projectService;
 
-    ProjectDto projectDto;
-
-    @Before
-    public void init() {
-        TaskDto taskDto = TaskDto.builder()
-                .description("des")
-                .id((long) 1)
-                .projectId((long) 1)
-                .status(StatusTask.IN_PROGRESS)
-                .title("Title")
-                .build();
-
-
-        projectDto = ProjectDto.builder()
-                .id((long) 1)
-                .title("Title")
-                .taskDtos(Collections.singletonList(taskDto))
-                .build();
-    }
+    ProjectDto projectDto = dataUtils.getProjectDtoExample();
 
     @Test
     @SneakyThrows
