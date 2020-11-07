@@ -1,5 +1,7 @@
 package com.stepan.todoistback.units;
 
+import com.stepan.todoistback.business.entity.ProjectEntity;
+import com.stepan.todoistback.business.entity.TaskEntity;
 import com.stepan.todoistback.web.dto.TaskDto;
 import com.stepan.todoistback.web.dto.enums.ProjectDto;
 import com.stepan.todoistback.web.dto.enums.StatusTask;
@@ -23,11 +25,11 @@ public class DataUtils {
 
     private void generateTaskDto() {
         taskDto = TaskDto.builder()
-                .description("des")
-                .id((long) 1)
-                .projectId((long) 1)
-                .status(StatusTask.IN_PROGRESS)
                 .title("Title")
+                .status(StatusTask.IN_PROGRESS)
+                .id((long) 1)
+                .description("desc")
+                .projectId((long) 1)
                 .build();
     }
 
@@ -55,6 +57,30 @@ public class DataUtils {
     }
 
     public List<TaskDto> getListTaskDto() {
+        return list;
+    }
+
+    public List<TaskEntity> getListTaskEntity() {
+        List<TaskEntity> list = new ArrayList<>();
+
+        ProjectEntity projectEntity = ProjectEntity.builder()
+                .title("Title")
+                .id((long) 1)
+                .tasks(null)
+                .build();
+
+        TaskEntity taskEntity = TaskEntity.builder()
+                .title("Title")
+                .status(StatusTask.IN_PROGRESS)
+                .id((long) 1)
+                .description("desc")
+                .projectId(projectEntity)
+                .build();
+
+        projectEntity.setTasks(Collections.singletonList(taskEntity));
+
+        list.add(taskEntity);
+
         return list;
     }
 }
