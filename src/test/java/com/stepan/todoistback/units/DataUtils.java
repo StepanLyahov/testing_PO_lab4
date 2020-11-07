@@ -16,7 +16,6 @@ public class DataUtils {
     ProjectDto projectDto;
     List<TaskDto> list = new ArrayList<>();
 
-
     public DataUtils() {
         generateTaskDto();
         generateProjectDto();
@@ -39,6 +38,7 @@ public class DataUtils {
                 .title("Title")
                 .taskDtos(Collections.singletonList(getTaskDtoExample()))
                 .build();
+
     }
 
     private void generateListTaskDto() {
@@ -50,7 +50,6 @@ public class DataUtils {
     public TaskDto getTaskDtoExample() {
         return taskDto;
     }
-
 
     public ProjectDto getProjectDtoExample() {
         return projectDto;
@@ -83,4 +82,15 @@ public class DataUtils {
 
         return list;
     }
+
+    public ProjectEntity getProjectEntityExample() {
+        ProjectEntity projectEntity = ProjectEntity.builder()
+                .title("Title")
+                .id((long) 1)
+                .tasks(new ArrayList<>())
+                .build();
+
+        return projectEntity;
+    }
+
 }
