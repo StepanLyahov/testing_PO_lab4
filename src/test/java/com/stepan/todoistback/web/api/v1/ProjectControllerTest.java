@@ -4,7 +4,6 @@ import com.stepan.todoistback.business.service.ProjectService;
 import com.stepan.todoistback.units.DataUtils;
 import com.stepan.todoistback.web.dto.enums.ProjectDto;
 import lombok.SneakyThrows;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;

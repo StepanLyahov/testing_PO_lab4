@@ -28,7 +28,7 @@ public class TaskControllerTest extends ApiTest {
     @MockBean
     TaskService taskService;
 
-    TaskDto taskDto;
+    TaskDto taskDto = dataUtils.getTaskDtoExample();
     List<TaskDto> taskDtos = dataUtils.getListTaskDto();
 
     @Test
